@@ -12,7 +12,7 @@ namespace blog_fluent_mapping.Data.Mappings
             builder.ToTable("User");
 
             // primary key
-            // builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.Id);
 
             // identity (1, 1) e primary key
             builder.Property(x => x.Id).ValueGeneratedOnAdd().UseIdentityColumn();
@@ -35,8 +35,21 @@ namespace blog_fluent_mapping.Data.Mappings
             .HasColumnType("VARCHAR") // PROPERTY TYPE
             .HasMaxLength(80); // MAX LENGTH
 
-            // indexe
+            // index
             builder.HasIndex(x => x.Slug, "IX_USER_SLUG").IsUnique();
+
+            // relations
+            builder.HasMany(x => x.Roles).WithMany(x => x.Users)
+            .UsingEntity<Dictionary <string, object> >(
+                "UserRole",
+                role => role.HasOne<Role>().WithMany()
+                .HasForeignKey("RoleId").HasConstraintName("FK_UserRole_RoleId")
+                .OnDelete(DeleteBehavior.Cascade),
+
+                user => user.HasOne<User>().WithMany()
+                .HasForeignKey("TagId").HasConstraintName("FK_UserRole_UserId")
+                .OnDelete(DeleteBehavior.Cascade)
+            );
         }
     }
 }
