@@ -11,5 +11,9 @@ namespace blog_orm_structure_with_ef.Models
         public string Slug { get; set; }
         public DateTime CreateUpdate { get; set; }
         public DateTime LastUpdateDate { get; set; }
+
+        public User Author { get; set; }
+        public Category Category { get; set; }
+        public IList<Tag> Tags { get; set; }
     }
 }

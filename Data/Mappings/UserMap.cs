@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace blog_fluent_mapping.Data.Mappings
 {
-    public class CategoryMap : IEntityTypeConfiguration<Category> //=> interface
+    public class UserMap : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
             // tabela
-            builder.ToTable("Category");
+            builder.ToTable("User");
 
             // primary key
             // builder.HasKey(x => x.Id);
@@ -24,14 +24,19 @@ namespace blog_fluent_mapping.Data.Mappings
             .HasColumnType("NVARCHAR") // PROPERTY TYPE
             .HasMaxLength(80); // MAX LENGTH
 
-            builder.Property(x => x.Slug)
+            builder.Property(x => x.Bio);
+            builder.Property(x => x.Email);
+            builder.Property(x => x.Image);
+            builder.Property(x => x.PasswordHash);
+
+            builder.Property(x => x.Name)
             .IsRequired() // NOT NULL
-            .HasColumnName("Name") // COLUMN NAME
+            .HasColumnName("Slug") // COLUMN NAME
             .HasColumnType("VARCHAR") // PROPERTY TYPE
             .HasMaxLength(80); // MAX LENGTH
 
-            // indexes
-            builder.HasIndex(x => x.Slug, "IX_Category_Slug").IsUnique();
+            // indexe
+            builder.HasIndex(x => x.Slug, "IX_USER_SLUG").IsUnique();
         }
     }
 }
