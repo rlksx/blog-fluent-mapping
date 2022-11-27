@@ -47,7 +47,7 @@ namespace blog_fluent_mapping.Data.Mappings
                 .OnDelete(DeleteBehavior.Cascade),
 
                 user => user.HasOne<User>().WithMany()
-                .HasForeignKey("TagId").HasConstraintName("FK_UserRole_UserId")
+                .HasForeignKey("UserId").HasConstraintName("FK_UserRole_UserId")
                 .OnDelete(DeleteBehavior.Cascade)
             );
         }
