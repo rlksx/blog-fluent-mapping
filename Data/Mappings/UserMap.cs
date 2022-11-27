@@ -29,7 +29,7 @@ namespace blog_fluent_mapping.Data.Mappings
             builder.Property(x => x.Image);
             builder.Property(x => x.PasswordHash);
 
-            builder.Property(x => x.Name)
+            builder.Property(x => x.Slug)
             .IsRequired() // NOT NULL
             .HasColumnName("Slug") // COLUMN NAME
             .HasColumnType("VARCHAR") // PROPERTY TYPE

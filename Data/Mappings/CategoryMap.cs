@@ -26,7 +26,7 @@ namespace blog_fluent_mapping.Data.Mappings
 
             builder.Property(x => x.Slug)
             .IsRequired() // NOT NULL
-            .HasColumnName("Name") // COLUMN NAME
+            .HasColumnName("Slug") // COLUMN NAME
             .HasColumnType("VARCHAR") // PROPERTY TYPE
             .HasMaxLength(80); // MAX LENGTH
 

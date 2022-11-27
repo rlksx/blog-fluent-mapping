@@ -18,6 +18,6 @@ namespace blog_orm_structure_with_ef.Data
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer(@"Server=localhost,1433;Database=Blog;User ID=sa;Password=1q2w3e4r@#$;Trusted_Connection=False; TrustServerCertificate=True;");
+            => options.UseSqlServer(@"Server=localhost,1433;Database=BlogTest;User ID=sa;Password=1q2w3e4r@#$;Trusted_Connection=False; TrustServerCertificate=True;");
     }
 }
